@@ -22,11 +22,19 @@ namespace WebAPIKN.Controllers
         //param
         public HocSinh GetHocSinhByID(int ID)
         {
+
             return hocSinhs.FirstOrDefault(x => x.ID == ID);
         }
         [HttpPost]
         [Route("api/hocsinh/themhocsinh")]
         public IEnumerable<HocSinh> ThemHocSinh([FromBody] HocSinh hocSinh)
+        {
+            hocSinhs.Add(hocSinh);
+            return hocSinhs;
+        }
+        [HttpPut]
+        [Route("api/hocsinh/suahs")]
+        public IEnumerable<HocSinh> Edit(int ID, [FromBody] HocSinh hocSinh)
         {
             hocSinhs.Add(hocSinh);
             return hocSinhs;
